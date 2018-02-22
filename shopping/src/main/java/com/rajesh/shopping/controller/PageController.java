@@ -55,20 +55,33 @@ public class PageController {
 	}
 	
 	
-	@RequestMapping(value= {"/show/category/${id}/products"})
+	/* methods to load all products and based on category
+	 * 
+	 */
+
 	
-	public ModelAndView showCategoryProducts(@PathVariable("id") int id) {
-		ModelAndView mv=new ModelAndView("page");
-		//categoryDao to fetch single catgory
+	
+	@RequestMapping(value = "/show/category/{id}/products")
+	public ModelAndView showCategoryProducts(@PathVariable("id") int id) {		
+		ModelAndView mv = new ModelAndView("page");
 		
-		Category category=null;
+		// categoryDAO to fetch a single category
+		Category category = null;
 		
-		category=categoryDAO.get(id);
+		category = categoryDAO.get(id);
+		
 		mv.addObject("title",category.getName());
-		mv.addObject("categories",categoryDAO.list());
-		mv.addObject("category",category);
+		
+		//passing the list of categories
+		mv.addObject("categories", categoryDAO.list());
+		
+		// passing the single category object
+		mv.addObject("category", category);
 		
 		mv.addObject("userClickCategoryProducts",true);
-		return mv;
-	}
+		return mv;				
+	}	
+	
+	
+	
 }

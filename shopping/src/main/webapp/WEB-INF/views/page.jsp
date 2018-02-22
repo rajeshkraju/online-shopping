@@ -45,7 +45,7 @@
 		<div class="content">
 			<!-- Page Content -->
 			<!-- /.container -->
-			<c:if test="${userClickHome == true }">
+			<c:if test="${userClickHome == true}">
 
 				<%@ include file="home.jsp"%>
 
@@ -61,6 +61,13 @@
 				<%@ include file="contact.jsp"%>
 
 			</c:if>
+			
+			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true }">
+
+				<%@ include file="listProducts.jsp"%>
+
+			</c:if>
+
 
 		</div>
 
